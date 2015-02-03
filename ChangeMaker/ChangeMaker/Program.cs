@@ -12,18 +12,71 @@ namespace ChangeMaker
         {
             //calling the function with $4.19.  
             //Notice that when using the decimal format you must end numbers with an 'm'
-            ChangeAmount(4.19m);
+           ChangeAmount(4.19m);
+           ChangeAmount(3.18m);
+           ChangeAmount(.99m);
+           ChangeAmount(12.93m);
+
+           Console.ReadKey();
+
+                    
+           
+
         }
 
         public static Change ChangeAmount(decimal amount) 
         {
             //this is our object that will hold the data of how many coins of each type to return
+                       
             Change amountAsChange = new Change();
-           
+            
+            //declaring my variables at 0
+            amountAsChange.Quarters = 0;
+            amountAsChange.Dimes = 0;
+            amountAsChange.Nickles = 0;
+            amountAsChange.Pennies = 0;
 
+            //Defining the amount in the console before I mess with it all.  
+            Console.WriteLine("Total amount $ " + amount);
+
+
+            //start my while loop by taking out a quarter at at time and adding it to my amountAsChange above
+            while (amount >= .25m)
+            {
+                amount = amount - .25m;
+                amountAsChange.Quarters++;
+            }
+
+            //dimes
+            while (amount >= .10m)
+            {
+                amount = amount - .10m;
+                amountAsChange.Dimes++;
+            }
+
+            //nickels
+            while (amount >= .05m)
+            {
+                amount = amount - .05m;
+                amountAsChange.Nickles++;
+            }
+            
+            //pennies
+            while (amount >= .01m)
+            {
+                amount = amount - .01m;
+                amountAsChange.Pennies++;
+            }
+
+            //printing out to the console 
+            Console.WriteLine("Quarters: " + amountAsChange.Quarters);
+            Console.WriteLine("Dimes: " + amountAsChange.Dimes);
+            Console.WriteLine("Nickels: " + amountAsChange.Nickles);
+            Console.WriteLine("Pennies: " + amountAsChange.Pennies);
+            
 
             //return our Change Object
-            return changeProvided;
+            return amountAsChange;
         }
 
         /// <summary>
